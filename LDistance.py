@@ -12,7 +12,7 @@ for line in corpus:
         for i in range(1, max_num + 1, 1):
             if (str + ' ' + strs[strs.index(str) + i]) not in dic:
                 dic[str + ' ' + strs[strs.index(str) + i]] = 1
-            elif (str + ' ' + strs[strs.index(str) + i]) in dic:
+            else:
                 dic[str + ' ' + strs[strs.index(str) + i]] = dic[str + ' ' + strs[strs.index(str) + i]] + 1
             str_i = str + ' ' + strs[strs.index(str) + i] + '%d'%i
             if str_i in d_dic:
