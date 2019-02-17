@@ -152,6 +152,11 @@ for key in dict_match:
     if "陈长" in dict_match[key]:
         dict_match[key].remove("陈长")
 
+#k-v反转
+for k, vlist in dict_match.items():
+    for v in vlist:
+        dict_match_converse.setdefault(v, []).append(k)
+
 with open("LD_collocation.json", "w", encoding='utf-8') as f1:
     f1.writelines(json.dumps(dict_match, ensure_ascii=False, indent=4))
 with open("LD_collocation_converse.json", "w", encoding='utf-8') as f2:
