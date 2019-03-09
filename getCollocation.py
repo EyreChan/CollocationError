@@ -93,19 +93,19 @@ for line in corpus:
         for i in range(1, max_num + 1, 1):
             str_i = strs[strs.index(str) + i]
             #要求共现至少5次
-            if frq(str, str_i) > 5:
-                mi_num = mi(str, str_i)
-                d_num = disp(str, str_i)
-                #参数未定
-                if  mi_num >= 10:
+            #if frq(str, str_i) > 5:
+            mi_num = mi(str, str_i)
+            d_num = disp(str, str_i)
+            #参数未定
+            if  mi_num >= 5:
+                add_dic(str, str_i)
+            elif mi_num < 3 and mi_num >= 5 and d_num > 10:
+                add_dic(str, str_i)
+            elif mi_num < 2.5 and mi_num >= 3 and d_num > 20:
+                add_dic(str, str_i)
+            elif mi_num <= 2.5:
+                if isPeak(str, str_i):
                     add_dic(str, str_i)
-                elif mi_num < 10 and mi_num >= 8 and d_num > 10:
-                    add_dic(str, str_i)
-                elif mi_num < 8 and mi_num >= 6 and d_num > 20:
-                    add_dic(str, str_i)
-                elif mi_num <= 6:
-                    if isPeak(str, str_i):
-                        add_dic(str, str_i)
 
 for i in range(0, len(datalist1)):
     if datalist1[i] not in dict_match:
@@ -117,7 +117,6 @@ for i in range(0, len(datalist1)):
         else:
             dict_match[datalist1[i]].append(datalist2[i])
 
-#删去语料库中一些无用的重复的词语
 if "正文" in dict_match:
     dict_match.pop("正文")
 if "已有" in dict_match:
@@ -134,6 +133,7 @@ if "光明网" in dict_match:
     dict_match.pop("光明网")
 if "陈长" in dict_match:
     dict_match.pop("陈长")
+
 for key in dict_match:
     if "正文" in dict_match[key]:
         dict_match[key].remove("正文")

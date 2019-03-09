@@ -7,5 +7,8 @@ dic = {}
 for line in text:
     strs = line.rstrip().split(" ")
     for str in strs:
+        #print(str)
         LD(str, strs, dic)
+
+print(dic)
 
